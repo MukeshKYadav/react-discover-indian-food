@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import Menu from "./Menu";
-import Categories from "./Categories";
+import Cities from "./Cities";
 import items from "./data";
 
-const allCategories = ["all", ...new Set(items.map((item) => item.category))];
-// console.log(allCategories);
+const allCities = ["all", ...new Set(items.map((item) => item.city))];
+// console.log(allCities);
 
 function App() {
   const [menuItems, setMenuItems] = useState(items);
-  const [categories, setCategories] = useState(allCategories);
-  // console.log(categories);
+  const [cities, setCities] = useState(allCities);
+  // console.log(cities);
 
-  const filterItems = (category) => {
-    if (category === "all") {
+  const filterItems = (city) => {
+    if (city === "all") {
       setMenuItems(items);
       return;
     }
-    const newItems = items.filter((item) => item.category === category);
+    const newItems = items.filter((item) => item.city === city);
     setMenuItems(newItems);
   };
   return (
@@ -26,7 +26,7 @@ function App() {
           <h2>Indian Delicacies</h2>
           <div className="underline"></div>
         </div>
-        <Categories filterItems={filterItems} categories={categories} />
+        <Cities filterItems={filterItems} cities={cities} />
         <Menu menuItems={menuItems} />
       </section>
     </main>
